@@ -1,0 +1,680 @@
+/* ========================================================
+   RAZORPAY STANDARD PAYMENT GATEWAY MODAL
+   - Authentic Razorpay Checkout Interface Simulation & Real SDK Integration
+   - Dual-Theme Support (Light & Dark Theme)
+   - UPI, Cards, Net Banking & 1-Click Test Checkout
+   ======================================================== */
+
+.rzp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(11, 19, 34, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: rzpFadeIn 0.25s ease-out;
+}
+
+@keyframes rzpFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rzp-modal {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  animation: rzpScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .rzp-modal,
+.dark-theme .rzp-modal {
+  background: #0d1728;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+}
+
+@keyframes rzpScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Header with Razorpay Midnight Blue Branding */
+.rzp-header {
+  background: linear-gradient(135deg, #0c2340 0%, #173b6c 100%);
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rzp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rzp-logo-badge {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rzp-merchant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rzp-merchant-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rzp-merchant-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.rzp-test-tag {
+  background: #f59e0b;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.rzp-order-subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.rzp-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.rzp-header-amount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: -0.02em;
+}
+
+.rzp-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.rzp-close-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: rotate(90deg);
+}
+
+/* Modal Body: Split Sidebar & Content Area */
+.rzp-body {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  min-height: 380px;
+  background: #ffffff;
+}
+
+[data-theme="dark"] .rzp-body,
+.dark-theme .rzp-body {
+  background: #0d1728;
+}
+
+/* Sidebar with Payment Methods */
+.rzp-sidebar {
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+[data-theme="dark"] .rzp-sidebar,
+.dark-theme .rzp-sidebar {
+  background: #08101d;
+  border-right-color: rgba(255, 255, 255, 0.08);
+}
+
+.rzp-sidebar-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 6px 12px 2px;
+  letter-spacing: 0.5px;
+}
+
+.rzp-method-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+  font-family: inherit;
+  color: #334155;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .rzp-method-btn,
+.dark-theme .rzp-method-btn {
+  color: #cbd5e1;
+}
+
+.rzp-method-btn:hover {
+  background: rgba(56, 189, 248, 0.08);
+  color: #0284c7;
+}
+
+[data-theme="dark"] .rzp-method-btn:hover,
+.dark-theme .rzp-method-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #38bdf8;
+}
+
+.rzp-method-btn.active {
+  background: #ffffff;
+  color: #0c2340;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .rzp-method-btn.active,
+.dark-theme .rzp-method-btn.active {
+  background: #132035;
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.rzp-method-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Method Detail Content Area */
+.rzp-content-area {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.rzp-method-heading {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 4px 0;
+  color: #0f172a;
+}
+
+[data-theme="dark"] .rzp-method-heading,
+.dark-theme .rzp-method-heading {
+  color: #f8fafc;
+}
+
+.rzp-method-subtext {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 0 0 18px 0;
+}
+
+[data-theme="dark"] .rzp-method-subtext,
+.dark-theme .rzp-method-subtext {
+  color: #94a3b8;
+}
+
+/* Quick Test Banner */
+.rzp-test-prompt-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(56, 189, 248, 0.12) 100%);
+  border: 1px dashed rgba(16, 185, 129, 0.4);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rzp-test-prompt-text {
+  font-size: 12px;
+  color: #065f46;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .rzp-test-prompt-text,
+.dark-theme .rzp-test-prompt-text {
+  color: #6ee7b7;
+}
+
+.rzp-instant-test-btn {
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.rzp-instant-test-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+/* UPI Apps Grid */
+.rzp-upi-apps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.rzp-upi-app-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334155;
+}
+
+[data-theme="dark"] .rzp-upi-app-card,
+.dark-theme .rzp-upi-app-card {
+  background: #08101d;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.rzp-upi-app-card:hover,
+.rzp-upi-app-card.selected {
+  border-color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .rzp-upi-app-card.selected,
+.dark-theme .rzp-upi-app-card.selected {
+  border-color: #38bdf8;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.rzp-upi-icon {
+  font-size: 20px;
+}
+
+/* Form Inputs */
+.rzp-input-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+[data-theme="dark"] .rzp-input-label,
+.dark-theme .rzp-input-label {
+  color: #cbd5e1;
+}
+
+.rzp-text-input {
+  width: 100%;
+  height: 42px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  padding: 0 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #0f172a;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .rzp-text-input,
+.dark-theme .rzp-text-input {
+  background: #08101d;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #f8fafc;
+}
+
+.rzp-text-input:focus {
+  border-color: #0c2340;
+  background: #ffffff;
+}
+
+[data-theme="dark"] .rzp-text-input:focus {
+  border-color: #38bdf8;
+  background: #0d1728;
+}
+
+/* Net Banking Grid */
+.rzp-banks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.rzp-bank-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .rzp-bank-card,
+.dark-theme .rzp-bank-card {
+  background: #08101d;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.rzp-bank-card:hover,
+.rzp-bank-card.selected {
+  border-color: #0c2340;
+  background: rgba(12, 35, 64, 0.06);
+}
+
+[data-theme="dark"] .rzp-bank-card.selected,
+.dark-theme .rzp-bank-card.selected {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+}
+
+/* Pay CTA Button */
+.rzp-pay-cta-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0c2340 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  font-size: 14.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(12, 35, 64, 0.35);
+  transition: all 0.22s ease;
+  margin-top: 18px;
+  font-family: inherit;
+}
+
+.rzp-pay-cta-btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px rgba(12, 35, 64, 0.5);
+  background: linear-gradient(135deg, #091a30 0%, #2563eb 100%);
+}
+
+.rzp-pay-cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Security Trust Footer */
+.rzp-footer-trust {
+  padding: 12px 24px;
+  background: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+}
+
+[data-theme="dark"] .rzp-footer-trust,
+.dark-theme .rzp-footer-trust {
+  background: #08101d;
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.rzp-trust-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rzp-trust-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Processing / Verifying Screen */
+.rzp-state-container {
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 380px;
+}
+
+.rzp-spinner {
+  width: 52px;
+  height: 52px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: rzpSpin 0.8s linear infinite;
+  margin-bottom: 20px;
+}
+
+[data-theme="dark"] .rzp-spinner,
+.dark-theme .rzp-spinner {
+  border-color: rgba(255, 255, 255, 0.15);
+  border-top-color: #38bdf8;
+}
+
+@keyframes rzpSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rzp-state-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #0f172a;
+}
+
+[data-theme="dark"] .rzp-state-title,
+.dark-theme .rzp-state-title {
+  color: #f8fafc;
+}
+
+.rzp-state-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0 0 16px 0;
+  max-width: 380px;
+}
+
+[data-theme="dark"] .rzp-state-desc,
+.dark-theme .rzp-state-desc {
+  color: #94a3b8;
+}
+
+/* Success Checkmark Screen */
+.rzp-success-checkmark {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 900;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.5);
+  margin-bottom: 20px;
+  animation: rzpPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes rzpPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.rzp-tx-details-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: #334155;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 280px;
+}
+
+[data-theme="dark"] .rzp-tx-details-box,
+.dark-theme .rzp-tx-details-box {
+  background: #08101d;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .rzp-body {
+    grid-template-columns: 1fr;
+  }
+
+  .rzp-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 8px;
+  }
+
+  .rzp-sidebar-section-title {
+    display: none;
+  }
+
+  .rzp-method-btn {
+    padding: 8px 12px;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+
+  .rzp-content-area {
+    padding: 18px;
+  }
+
+  .rzp-upi-apps-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rzp-banks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

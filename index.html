@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Securitas - Verify Anyone Before You Bring Them Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Sora:wght@400;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Razorpay Checkout Gateway SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      function showStartupDiagnostic(msg) {
+        var r = document.getElementById('root');
+        if (r && (!r.children || r.children.length === 0)) {
+          r.innerHTML = '<div style="padding:40px;background:#091222;color:#f8fafc;min-height:100vh;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="max-width:620px;background:#131d2e;padding:28px;border-radius:14px;border:1px solid #ef4444;text-align:center"><h3 style="color:#ef4444;margin:0 0 10px">Startup Diagnostic</h3><p style="color:#cbd5e1;font-size:14px;word-break:break-word">' + msg + '</p><button onclick="localStorage.clear();location.hash=\'#home\';location.reload()" style="margin-top:16px;padding:8px 18px;background:#10b981;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:bold">Reset Storage &amp; Reload</button></div></div>';
+        }
+      }
+      window.addEventListener('error', function(e) {
+        console.error('Startup error caught:', e);
+        showStartupDiagnostic(e.message || (e.error && e.error.message) || 'Script execution error');
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled rejection caught:', e);
+        showStartupDiagnostic((e.reason && (e.reason.message || e.reason.stack)) || String(e.reason) || 'Module load rejection');
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

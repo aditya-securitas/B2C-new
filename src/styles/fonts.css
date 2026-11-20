@@ -1,0 +1,103 @@
+/* ========================================================
+   LOCAL BRAND FONTS: SECURITAS PRO / TT RATIONALIST / CEREBRI SANS
+   Located in: src/assets/font/
+======================================================== */
+
+@font-face {
+  font-family: 'Securitas Pro';
+  src: url('../assets/font/securitaspro_bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Securitas Pro';
+  src: url('../assets/font/securitaspro_bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Securitas Pro';
+  src: url('../assets/font/securitaspro_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Securitas Pro';
+  src: url('../assets/font/securitaspro_regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Securitas Pro';
+  src: url('../assets/font/securitaspro_light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Rationalist Aliasing */
+@font-face {
+  font-family: 'TT Rationalist';
+  src: url('../assets/font/securitaspro_bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Rationalist';
+  src: url('../assets/font/securitaspro_bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Rationalist';
+  src: url('../assets/font/securitaspro_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cerebri Sans Aliasing */
+@font-face {
+  font-family: 'Cerebri Sans';
+  src: url('../assets/font/securitaspro_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cerebri Sans';
+  src: url('../assets/font/securitaspro_regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cerebri Sans';
+  src: url('../assets/font/securitaspro_bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cerebri Sans';
+  src: url('../assets/font/securitaspro_light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+

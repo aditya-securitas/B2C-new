@@ -1,0 +1,1112 @@
+/* ========================================================
+   SEPARATE VERIFICATION STATUS & EXECUTIVE REPORT MODAL
+   - Exact 5-Second High-Tech Cyber Animation (No scrollbar)
+   - 100% Verified Dossier Screen (No scrollbar)
+   - Executive Background Verification Report (Print & PDF)
+   - Background Page Body Scroll Lock
+======================================================== */
+
+/* Prevent page body scroll when modal is active */
+body.vsm-locked,
+html.vsm-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Modal Overlay */
+.vsm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(11, 19, 32, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: vsmFadeIn 0.25s ease-out;
+}
+
+@keyframes vsmFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================================================
+   STAGE 1: 5-SECOND HIGH-TECH CYBER SCANNER (COMPACT - NO SCROLL)
+======================================================== */
+.vsm-animation-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4), 0 0 30px rgba(37, 99, 235, 0.15);
+  padding: 28px 24px 24px;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: vsmSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes vsmSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Rotating Radar Beam & Pulse */
+.vsm-radar-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vsm-radar-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  animation: vsmRadarPulse 2.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.vsm-radar-ring:nth-child(2) {
+  animation-delay: -0.7s;
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.vsm-radar-sweep-beam {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 260deg,
+    rgba(6, 182, 212, 0.18) 300deg,
+    rgba(37, 99, 235, 0.7) 360deg
+  );
+  animation: vsmRadarRotate 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes vsmRadarRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes vsmRadarPulse {
+  0% { transform: scale(0.65); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.vsm-radar-center {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d4ed8, #4338ca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 26px;
+  box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.6);
+  position: relative;
+  z-index: 3;
+}
+
+.vsm-anim-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.vsm-anim-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+  max-width: 440px;
+}
+
+/* Neon Gradient Progress Bar */
+.vsm-progress-bar-shell {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.vsm-progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981, #2563eb);
+  background-size: 250% 100%;
+  animation: vsmGradientFlow 1.8s linear infinite;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+}
+
+@keyframes vsmGradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 250% 50%; }
+}
+
+.vsm-progress-meta-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.vsm-progress-pct {
+  color: #2563eb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Streaming Cyber Console Log Box */
+.vsm-cyber-console {
+  width: 100%;
+  background: #090e17;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  text-align: left;
+  box-sizing: border-box;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.vsm-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.vsm-console-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vsm-console-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: vsmPulseFast 1s ease-in-out infinite alternate;
+}
+
+@keyframes vsmPulseFast {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.vsm-console-time {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+.vsm-console-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 78px;
+  overflow: hidden;
+}
+
+.vsm-console-line {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vsm-console-line.active {
+  color: #67e8f9;
+  font-weight: 600;
+}
+
+.vsm-console-tag {
+  font-size: 9.5px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.vsm-console-tag.ok {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.vsm-console-tag.active {
+  background: rgba(6, 182, 212, 0.2);
+  color: #38bdf8;
+}
+
+/* 4-Step Checklist Grid (2x2 Compact) */
+.vsm-checklist-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.vsm-checklist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.vsm-checklist-item.active {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.4);
+  color: #1d4ed8;
+}
+
+.vsm-checklist-item.completed {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #065f46;
+}
+
+/* ========================================================
+   STAGE 2: 100% VERIFIED SCREEN (COMPACT - NO SCROLL)
+======================================================== */
+.vsm-verified-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35);
+  padding: 28px 24px 22px;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: vsmSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vsm-verified-shield-badge {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 800;
+  box-shadow: 0 12px 30px -4px rgba(16, 185, 129, 0.45);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.vsm-verified-shield-badge::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(16, 185, 129, 0.55);
+  animation: vsmRotateSlow 16s linear infinite;
+}
+
+@keyframes vsmRotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vsm-verified-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.vsm-verified-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 20px 0;
+  line-height: 1.45;
+  max-width: 460px;
+}
+
+/* Candidate Dossier Summary Pill Box */
+.vsm-dossier-summary-box {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.vsm-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.vsm-summary-name-col h4 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 2px 0;
+}
+
+.vsm-summary-name-col span {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.vsm-grade-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.vsm-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 14px;
+}
+
+.vsm-summary-cell label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1px;
+}
+
+.vsm-summary-cell p {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  word-break: break-all;
+}
+
+/* The Two Action Buttons: Show Final Report & Download Report */
+.vsm-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.vsm-btn-show-report {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1.5px solid #cbd5e1;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.vsm-btn-show-report:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vsm-btn-download-report {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: 1.5px solid #1d4ed8;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.vsm-btn-download-report:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+.vsm-close-link {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.vsm-close-link:hover {
+  color: #0f172a;
+  text-decoration: underline;
+}
+
+/* ========================================================
+   STAGE 3: EXECUTIVE FINAL REPORT MODAL (A4 PRINT & PDF)
+======================================================== */
+.vsm-report-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(11, 19, 32, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  animation: vsmFadeIn 0.3s ease-out;
+}
+
+.vsm-report-sheet {
+  background: #ffffff;
+  color: #0f172a;
+  width: 100%;
+  max-width: 860px;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 24px;
+}
+
+/* Sticky Control Header */
+.vsm-report-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #0f172a;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.vsm-report-action-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f8fafc;
+}
+
+.vsm-report-action-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vsm-report-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.vsm-report-ctrl-btn.primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.vsm-report-ctrl-btn.primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+}
+
+.vsm-report-ctrl-btn.close {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.vsm-report-ctrl-btn.close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* Printable Document Sheet */
+.vsm-report-printable {
+  padding: 38px 44px;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  position: relative;
+}
+
+.vsm-report-printable::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1.5px solid #e2e8f0;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.vsm-report-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  gap: 16px;
+}
+
+.vsm-report-crest {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vsm-crest-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 26px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+}
+
+.vsm-crest-text h2 {
+  font-size: 21px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0 0 3px 0;
+  text-transform: uppercase;
+}
+
+.vsm-crest-text p {
+  font-size: 11px;
+  color: #64748b;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.vsm-report-stamp-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.vsm-embossed-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 2px solid #10b981;
+  padding: 7px 14px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.vsm-stamp-ref {
+  font-size: 10.5px;
+  color: #64748b;
+  margin-top: 4px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Metadata Bar */
+.vsm-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+}
+
+.vsm-meta-cell label {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.vsm-meta-cell span {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Candidate Profile Box */
+.vsm-profile-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.vsm-profile-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 14px;
+  background: #f1f5f9;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vsm-avatar-icon {
+  font-size: 38px;
+}
+
+.vsm-avatar-tag {
+  position: absolute;
+  bottom: -6px;
+  background: #10b981;
+  color: #ffffff;
+  font-size: 8.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vsm-profile-main {
+  flex: 1;
+}
+
+.vsm-profile-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.vsm-profile-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.vsm-profile-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.vsm-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 14px;
+}
+
+.vsm-profile-kv strong {
+  display: block;
+  font-size: 9.5px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.vsm-profile-kv span {
+  font-size: 12.5px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.vsm-trust-score-dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ecfdf5;
+  border: 1.5px solid #a7f3d0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.vsm-score-num {
+  font-size: 24px;
+  font-weight: 900;
+  color: #047857;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.vsm-score-lbl {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #065f46;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 4 Check Matrix Cards */
+.vsm-section-header {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vsm-section-header::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: #e2e8f0;
+}
+
+.vsm-checks-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.vsm-check-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vsm-check-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.vsm-check-card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.vsm-check-card-icon {
+  font-size: 16px;
+}
+
+.vsm-check-card-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.vsm-check-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.vsm-check-card-source {
+  font-size: 10.5px;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.vsm-check-card-desc {
+  font-size: 11.5px;
+  color: #334155;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.vsm-check-card-footer {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #94a3b8;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Rubber Stamp & Signature Footer */
+.vsm-report-footer {
+  border-top: 2px solid #0f172a;
+  padding-top: 18px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.vsm-rubber-stamp {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 2px dashed #2563eb;
+  color: #1e40af;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 8.5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  background: rgba(37, 99, 235, 0.03);
+}
+
+.vsm-rubber-stamp strong {
+  font-size: 10.5px;
+  color: #1e3a8a;
+}
+
+.vsm-signature-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.vsm-signature-art {
+  font-family: 'Brush Script MT', 'Segoe Script', cursive;
+  font-size: 21px;
+  color: #1e3a8a;
+  margin-bottom: 2px;
+}
+
+.vsm-signature-name {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.vsm-signature-sub {
+  font-size: 9.5px;
+  color: #64748b;
+  margin: 0;
+}
+
+.vsm-hash-strip {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #64748b;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.vsm-hash-strip code {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* ========================================================
+   PRINT / PDF MEDIA STYLES
+======================================================== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .vsm-report-overlay,
+  .vsm-report-printable,
+  .vsm-report-printable * {
+    visibility: visible;
+  }
+  .vsm-report-overlay {
+    position: absolute;
+    inset: 0;
+    background: #ffffff !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+  }
+  .vsm-report-action-bar {
+    display: none !important;
+  }
+  .vsm-report-sheet {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+  .vsm-report-printable {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .vsm-profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .vsm-profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .vsm-checks-matrix {
+    grid-template-columns: 1fr;
+  }
+  .vsm-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vsm-actions-row {
+    flex-direction: column;
+  }
+  .vsm-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
